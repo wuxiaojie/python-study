@@ -77,7 +77,7 @@ def verifycodecheck(request):
        request.session["flag"] = False
        return redirect("/verifycodefile/")
     
-from django.http import HttpResponse
+
 def verifycode(request):
     #引入绘图模块
     from PIL import Image, ImageDraw, ImageFont
