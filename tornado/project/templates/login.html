@@ -1,0 +1,10 @@
+<body>
+     <form action="{{ url }}"  method='post'>
+      {% module xsrf_form_html() %}
+      name: <input type="text" name="username">
+      <hr/>
+      password: <input type='password' name="passwd">
+      <hr/>
+      <input type="submit" value="login" />
+      </form>
+</body>
