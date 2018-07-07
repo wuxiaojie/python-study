@@ -1,0 +1,14 @@
+<body>
+     <form action="/postfile" method='post'>
+      {% module xsrf_form_html() %}
+      name: <input type="text" name="username">
+      <hr/>
+      password: <input type='password' name="passwd">
+      <hr/>
+      hobby:
+      <input type="checkbox" value="power" name="hobby"> POWER
+      <input type="checkbox" value="money" name="hobby"> MONEY
+      <input type="checkbox" value="book" name="hobby"> BOOK
+      <input type="submit" value="login" />
+      </form>
+</body>
