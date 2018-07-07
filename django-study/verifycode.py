@@ -24,8 +24,9 @@ def verifycode(request):
     rand_str = ''
     for i in range(0, 4):
         rand_str += str1[random.randrange(0, len(str1))]
-    #构造字体对象
-    font = ImageFont.truetype('FreeMono.ttf', 23)
+    #构造字体对象，其中FreeMono.ttf可能需要自己下载
+    #font = ImageFont.truetype('FreeMono.ttf', 23) 这个会报错IOError: cannot open resource，似乎需要绝对路径
+    font = ImageFont.truetype('/root/python_study/django/HelloWorld/HelloWorld/FreeMono.ttf',23)
     #构造字体颜色
     fontcolor = (255, random.randrange(0, 255), random.randrange(0, 255))
     #绘制4个字
@@ -39,7 +40,8 @@ def verifycode(request):
     request.session['verifycode'] = rand_str
     #内存文件操作
     import io
-    buf = io.StringIO()
+    #buf = io.StringIO() 这个会报错，TypeError: unicode argument expected, got 'str'
+    buf = io.BytesIO()
     #将图片保存在内存中，文件类型为png
     im.save(buf, 'png')
     #将内存中的图片数据返回给客户端，MIME类型为图片png
