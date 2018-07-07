@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>模板标签</title>
+</head>
+<body>
+{% comment %}
+这里是注释
+多行注释
+{% endcomment %}
+
+<h1>这里是四则运算</h1>
+<p>初始值: {{ num }} </p>
+<p>加法(+10):{{ num|add:10 }} </p>
+<p>减法(-10):{{ num|add:-10 }} </p>
+<p>乘法(*5):{% widthratio num 1 5 %} </p>
+<p>除法(/5):{% widthratio num 5 1 %} </p>
+<p>整除(/3):{{ num|divisibleby:3 }} </p>
+
+<hr>
+<h1>这下面是个for循环</h1>
+<ul>
+{% for item in namelist %}
+<li>
+   {{ forloop.counter }} -- {{ item }}
+</li>
+{% endfor %}
+</ul>
+<hr>
+
+<h1> 这下面是个html转义，在视图函数里面传入html元素</h1>
+<h2>转义之前</h2>
+{{ code }}
+<h2>转义之后</h2>
+
+{{ code|safe }}
+</body>
+</html>
