@@ -62,6 +62,24 @@ def marks(request):
 def child(request):
     return render(request,"child.html")
 
+import os
+from django.conf import settings
+#仅支持上传文件
+def upload(request):
+    if request.method == 'GET':
+       return render(request,"upload.html")
+
+    elif request.method == "POST":
+       flist = request.FILES.getlist("file",None)
+       for f in flist:
+         filePath = os.path.join(settings.MEDIA_ROOT,f.name)
+         with open(filePath,'wb') as fp:
+             for info in f.chunks():
+                fp.write(info)
+       return HttpResponse("Upload Successfully") 
+    else:
+       return HttpResponse("Unacceptable http method!!")
+
 def verifycodefile(request):
     f = request.session.get("flag",True)
     context = {}
