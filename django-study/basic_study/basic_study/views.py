@@ -80,6 +80,25 @@ def upload(request):
     else:
        return HttpResponse("Unacceptable http method!!")
 
+#Upload directory, but cannot maintain its structure:
+def upload_dir(request):
+    if request.method == 'GET':
+        return render(request, 'upload_dir.html')
+    elif request.method == 'POST':
+        dirlist = request.FILES.getlist("upload",None)
+
+        if not dirlist:
+            return HttpResponse("Nothing was upload")
+        else:
+            for file in dirlist:
+                file_path = os.path.join(settings.MEDIA_ROOT,str(file))
+                with open(file_path, 'wb') as fp:
+                   for chunk in file.chunks():
+                       fp.write(chunk)
+            return HttpResponse("Upload Successfully")
+    else:
+            return HttpResponseRedirect("Unacceptable http method!!")
+
 def verifycodefile(request):
     f = request.session.get("flag",True)
     context = {}
