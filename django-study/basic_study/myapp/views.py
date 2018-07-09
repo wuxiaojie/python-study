@@ -32,3 +32,16 @@ def studentspage(request,pageid):
       page = paginator.page(pageid)
 
       return render(request,'myapp/studentspage.html',{"students":page})
+
+def ajaxstudents(request):
+    return render(request,'myapp/jqtest.html')
+
+from django.http import JsonResponse
+def studentsinfo(request):
+#    students = Student.objects.values()
+    students = Student.objects.all()
+    list = []
+    for item in students:
+        list.append([item.sname,item.sage])
+#    return JsonReponse({"data":students})
+    return JsonResponse({"data":list})
