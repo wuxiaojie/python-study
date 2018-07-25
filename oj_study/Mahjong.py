@@ -1,6 +1,5 @@
 import sys
 
-
 allow_len = [2,5,8,11,14]
 
 def is_all_three(l,lenth):
@@ -22,11 +21,7 @@ def is_all_three(l,lenth):
            tmp.remove(s+2)
            return is_all_three(tmp, lenth-3) 
 
-
     return False
-
-
-
 
 
 while True:
@@ -52,11 +47,7 @@ while True:
                continue
             else:
                p = l[i]
-            
-               
-    
-
-    
+                                
      if res:
         print 'yes'
      else:
