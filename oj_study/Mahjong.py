@@ -31,7 +31,6 @@ def is_all_three(l,lenth):
 
 while True:
      res = False
-     flag_two = False
      seq = raw_input()
      l = [int(i) for i in seq]
      lenth = len(l)
@@ -40,7 +39,6 @@ while True:
         p = l[0]
         for i in range(1,lenth):
             if l[i]== p:                  
-               flag_two = True
                tmp = [i for i in l]
                tmp.remove(p)
                tmp.remove(p)
